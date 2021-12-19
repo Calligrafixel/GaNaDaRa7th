@@ -49,6 +49,10 @@ function pageChange(){
 }
 
 window.onload = function(){
+    setTimeout(function(){
+        scrollTo(0, 0);
+    }, 100);
+
     const A = document.querySelector("#article");
     const leftA = document.querySelectorAll(".leftArticle");
     const rightA = document.querySelectorAll(".rightArticle");
