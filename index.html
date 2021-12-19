@@ -21,11 +21,11 @@
         }
 
         #page1{
-            display: block;
+            display: none;
             white-space: nowrap;
         }
         #page2{
-            display: none;
+            display: block;
         }
         #pageButton{
             position: fixed; left: 17rem; top: 3rem;
@@ -89,9 +89,6 @@
         }
 
 
-        #scroll{position: fixed; top: 9.5rem; left: 7rem;
-        font-size: 2rem; z-index: 1000;}
-
         .pageNum{font-family: cormorant-garamond, serif;
             font-weight: 400;
             font-style: normal;}
@@ -112,15 +109,95 @@
         #article .leftArticle{left: -18rem;}
         #article .rightArticle{right: -18rem;}
 
-        nav > #logo{position: fixed; width: 10rem;
+        #betweenSpace{height: 550rem;}
+
+        #credit .logo{width: 10rem;
+            position: relative; left: -12rem;
+        }
+        #credit div{
+            position: relative; left: -12rem;
+            height: 30rem; column-count: 2;
+            margin-top: 5rem;
+        }
+        #credit > p{
+            position: relative; left: -12rem;
+            height: 30rem;
+        }
+
+
+        .footnote{color: #19269C; position: relative;
+        }
+        .footnote .footnoteBox{position: absolute;
+            display: none;
+            border-top: 1px solid #19269C;
+        }
+        .footnote .footnoteBox:nth-child(1){left: 30rem;}
+        .footnote .footnoteBox:nth-child(2){right: 10rem;}
+
+        .footnote .footnoteContent{width: 20rem; background-color: white;
+            padding: 1rem;}
+
+
+        nav .logo{position: fixed; width: 10rem;
             top: 2rem; left: 3rem;}
         nav > #nav{position: fixed; width: 7rem;
-            bottom: 26rem; left: 2.5rem;}
+            bottom: 26rem; left: 2.5rem; display: none;}
+        nav > #chapterList{
+            position: fixed; bottom: 26rem; left: 1rem;
+        }
+        nav > #chapterList li{list-style-type: none;
+            height: 2rem;
+        }
+        nav > #chapterList .cl{float: left;}
+        nav > #chapterList .invertChapter .cl{
+            transform: scaleX(-1);
+            transform: rotateX(180deg);
+        }
+        nav > #chapterList .clImage{width: .7rem;
+            position: relative; top: .15rem; left: 1rem;
+            display: none;
+        }
+
+
+        #highlightButton{
+            position: fixed; width: 2.5rem;
+            right: 8rem; top: 5%;
+        }
+
+        #progressBar_full{
+            position: fixed; top: 5%; right: 5rem;
+            height: 90%;
+            border-right: 1px solid #969696;
+        }
+        #progressBar_now{
+            position: fixed; top: 5%; right: 5rem;
+            height: 0%;
+            border-right: 1px solid #19269C;
+        }
+
+        .progressPoint{
+            position: relative; bottom: .5rem; left: .5rem; 
+            width: 1rem; height: 1rem; border-radius: 1rem;
+        }
+        #progressPoint_now_outer{
+            position: fixed; top: 5%; right: 5rem;}
+        #progressPoint_now{
+            background-color: #19269C;
+        }
+        
+        #dataNum{
+            position: fixed; right: 9rem; top: 9rem;
+            background-color: #fff; border: 1px solid black;
+            padding: 1rem;
+        }
+        #chapterNum{font-size: 3rem; margin-left: 2.8rem;
+            color: #19269C;
+        }
 
         #bg{width: 105%; position: fixed; left: -1rem; bottom: 0rem;}
 
         ::-webkit-scrollbar{
-            display: n/one;
+            display: nne;
         }
     </style>
 </head>
@@ -274,8 +351,6 @@
     <div id="page2">
         <img src="bg.jpg" alt="" id="bg">
 
-        <div id="scroll"></div>
-
         <section id="article_bg"></section>
         <section id="article">
             <div class="pageLine"></div>
@@ -381,13 +456,26 @@
                 <br>&emsp;&emsp;“뭐야. 그럴 의도는 없었는데. 농담이야. 그렇게 심각하게 받아들이면 곤란해. 화가 좀 나서 그렇게 말했을 뿐이니까. 여행 일정을 거짓으로 말했잖아. 그래서 화가 났어. 그뿐이야. 이제 됐어.” 
                 <br>&emsp;&emsp;그건 사실이었다. 나는 모두에게 여행 일정을 거짓으로 말했다. 다른 섬의 이름까지 들먹여서. 하지만 공항에서 게오르크의 친한 친구와 딱 마주쳤을 때는 이제 안 되겠다며 그만뒀다.
                 <br>&emsp;&emsp;“자, 일어서시지. 이제 됐어. 에스프레소라도 마시러 가서 서로 푸는 게 어때?” 
-                <br>&emsp;&emsp;남자는 내 팔을 잡고 일으켜 세웠고 나는 남자의 두툼한 가슴에 파묻혀서 걷기 시작했다. 갑자기 유칼립투스* 향이 감돌아 놀라서 고개를 들어 보니 길가에 유칼립투스 한 그루가 우리를 내려다보듯이 서 있었다. 이대로 괜찮을지 모른다. 이대로 괜찮을 것 같은 느낌이 든다. 이제 봉투 일은 다 잊어버리고 그대로 놔두자.
+                <br>&emsp;&emsp;남자는 내 팔을 잡고 일으켜 세웠고 나는 남자의 두툼한 가슴에 파묻혀서 걷기 시작했다. 갑자기 
+                    <span class="footnote">
+                        유칼립투스*
+                        <div class="footnoteBox">
+                            <div class="footnoteContent">주로 열대지방과 호주에 분포하는 나무로 화분으로도 키운다. 키가 큰 나무로 높이가 90미터가량 되기도 하며, 잎에서 향기가 난다.</div>
+                        </div>
+                    </span> 향이 감돌아 놀라서 고개를 들어 보니 길가에 유칼립투스 한 그루가 우리를 내려다보듯이 서 있었다. 이대로 괜찮을지 모른다. 이대로 괜찮을 것 같은 느낌이 든다. 이제 봉투 일은 다 잊어버리고 그대로 놔두자.
                 <br>&emsp;&emsp;우리가 들어간 곳은 우체국 뒤에 있는 카페이자 바였다. 들어간 순간 홰에 앉은 새처럼 앉아 있는 남자들이 일제히 돌아보았다. 파파야 리큐어 냄새가 주위에 그득했다.
             </div>
             <br>
             <div class="rightArticle">
                 나는 갑자기 이상한 정열이 가슴을 꽉 붙잡아 자리에서 일어섰다. 지금밖에 없다. 아직 늦지는 않을 것이다. 지금을 놓치면 뒷일을 감당할 수 없게 된다. 
-                <br>&emsp;&emsp;나는 카운터 뒤쪽에 있는 화장실로 갔다. 들어갔더니 파리 떼가 땀이 밴 목덜미에 모여들었다. 끈질기게 달라붙어 땀을 핥더니 그걸로 모자란지 내쳐도 내쳐도 뱅뱅 날아올라 공중에서 원을 그리고 나서는 다시 내려왔다. 화장실 안쪽에는 예상대로 뿌연 유리 창문이 있었다. 창문을 밀었더니 잠겨 있진 않았다. 나는 그 창문을 통해 밖으로 기어 나가 상반신이 밑을 향하게끔 떨어졌다. 떨어진 곳은 쓰레기 더미 같은 데였는데 썩은 과일 껍질이 기분 나쁘게 나를 감쌌고 파리 떼가 일제히 날아올랐다. 거기서 당황한 나머지 몸을 일으키려고 너무 빨리 움직인 것이 실수였다. 옆으로 넘어져 머리가 부드러운 뭔가에 박혀 버렸다. 콜타르* 같은 물질이 머리카락에 들러붙어서 떼려고 했더니 손가락만 까매져 진득거릴 뿐 떨어지지 않았다. 발을 단단히 디디고 일어설 만한 발판조차 없어서 일어서려고 하면 늪 같은 부드러움에 발이 푹 빠져 버린다. 물에 녹다 만 골판지 사이에서 두꺼운 포장지가 바스락바스락 소리를 냈다. 마침내 버려진 나무 상자 하나를 손으로 짚고 나서야 일어설 수 있었다.
+                <br>&emsp;&emsp;나는 카운터 뒤쪽에 있는 화장실로 갔다. 들어갔더니 파리 떼가 땀이 밴 목덜미에 모여들었다. 끈질기게 달라붙어 땀을 핥더니 그걸로 모자란지 내쳐도 내쳐도 뱅뱅 날아올라 공중에서 원을 그리고 나서는 다시 내려왔다. 화장실 안쪽에는 예상대로 뿌연 유리 창문이 있었다. 창문을 밀었더니 잠겨 있진 않았다. 나는 그 창문을 통해 밖으로 기어 나가 상반신이 밑을 향하게끔 떨어졌다. 떨어진 곳은 쓰레기 더미 같은 데였는데 썩은 과일 껍질이 기분 나쁘게 나를 감쌌고 파리 떼가 일제히 날아올랐다. 거기서 당황한 나머지 몸을 일으키려고 너무 빨리 움직인 것이 실수였다. 옆으로 넘어져 머리가 부드러운 뭔가에 박혀 버렸다.
+                    <span class="footnote">
+                        콜타르*
+                        <div class="footnoteBox">
+                            <div class="footnoteContent">석탄을 가열할 때 나오는 검은색 점성 액체.</div>
+                        </div>
+                    </span> 
+                같은 물질이 머리카락에 들러붙어서 떼려고 했더니 손가락만 까매져 진득거릴 뿐 떨어지지 않았다. 발을 단단히 디디고 일어설 만한 발판조차 없어서 일어서려고 하면 늪 같은 부드러움에 발이 푹 빠져 버린다. 물에 녹다 만 골판지 사이에서 두꺼운 포장지가 바스락바스락 소리를 냈다. 마침내 버려진 나무 상자 하나를 손으로 짚고 나서야 일어설 수 있었다.
                 <br>&emsp;&emsp;쓰레기 더미는 우체국 뒷마당까지 이어졌고 그곳을 가로지르면 자전거 주차장이 나왔다. 주차장에는 자전거가 한 대 놓여 있었고 그 옆에 야자수가 한 그루 있었고, 그 야자수 뒤에 숨은 듯이 우체국 문이 있었다. 문은 잠겨 있지 않았다.
                 <br>&emsp;&emsp;우체국은 물에 잠겨 있었다. 곳곳에 탁하게 고인 물이 있었고 그 속에 더러워져서 옅은 갈색이 된 종잇조각들이 수도 없이 떠 있었다. 입구 근처에서는 고무장화를 신은 또 한 명의 성 게오르크가 펜싱에서 쓸 법한 가는 칼로 계속 뭔가를 찌르고 있었다. 그 ‘뭔가’는 검붉은 색이었는데 고양이처럼 작았다. 그것은 반항하려는지 도망가려는지 탁한 물을 튀겼고 깔개의 자투리처럼 형태도 분명하지 않았다. 어쩌면 동물이 아닐지도 모를 일이 었다. 성 게오르크는 심심풀이하듯이 실컷 칼을 휘두르더니 갑자기 이를 드러내며 미친 듯이 찔렀다. 성 게오르크는 때때로 으르렁대고 환성을 질러 댔는데 그 ‘뭔가’는 전혀 소리를 지르지 않았다. 원래 동물이 아니었던가 아니면 벌써 죽었던가 둘 중 하나인 낌새였다. 아무 일도 일어나지 않았다. 아무 일도 일어나지 않을 듯이 보였다. 그런데 성 게오르크는 열심히 계속 칼을 휘둘렀다.
                 <br>&emsp;&emsp;“직원은 어디 있지?”
@@ -404,12 +492,103 @@
                 <br>&emsp;&emsp;“넘어져 버려.”
                 <br>&emsp;&emsp;뒤에서 남자의 굵은 목소리가 들렸다. 나는 안 넘어졌다. 넘어지지 않고서 우체국으로 뛰어들었다. 좀 전의 성 게오르크는 이제 없었다. 그 대신 성 게오르크가 서 있던 곳의 탁한 물이 색깔이 바뀌어 거무스름한 붉은 색이 돼 있었다. 나는 물을 튀기며 입구를 지나 밖으로 나왔다. 신발이 젖었고 끈이 조금 풀어져 막 벗겨질 참이었으나 내게 신발 끈을 다시 묶을 시간은 없었다. 나는 신발 끈이 풀린 채로 바다를 향해 뛰어갔다. 그쪽을 향한 이유는 내리막길이었기 때문이다. 이제 언덕을 뛰어 올라갈 힘은 없었고 그저 기계적으로 다리를 좌우로 움직이고 교대로 내밀며 언덕을 내려갔다. 곧 모래밭이 나올 것이다. 그래도 달리기를 멈추지 않으면 바다가 나오고 막바지에 이르게 된다. 양쪽에는 방파제와 숙박 시설이 막고 있어서 직진으로 달릴 수밖에 없는 나는 바다에 들어가야만 할지도 모른다. 설마 그러지는 않겠지만. 왜냐하면 나는 수영을 25미터밖에 하지 못하기 때문에. 아마 나는 바다에 들어가지 않고 어딘가로 도망가겠지. 그건 바다가 눈앞에 나타나야만 알 수 있다. 바다까지 앞으로 얼마나 더 가야 하나. 바다는 머나 멀지 않나. 나는 그런 생각들을 하며 계속 언덕 아래로 달려갔다.
             </div>
-        </section>
 
+            <div id="betweenSpace"></div>
+
+            <div id="credit">
+                <img src="home_logo.PNG" class="logo" alt="">
+
+                <div>
+                    <p>
+                        제안들 37<br>
+                        <br>
+                        다와다 요코<br>
+                        글자를 옮기는 사람<br>
+                        <br>
+                        유라주 옮김<br>
+                        <br>
+                        초판 1쇄 발행. 2021년 4월 5일<br>
+                        <br>
+                        발행. 워크룸 프레스<br>
+                        편집. 김뉘연<br>
+                        제작. 세걸음<br>
+                        <br>
+                        ISBN 979-11-89356-52-1 04800<br>
+                        978-89-94207-33-9 (세트)<br>
+                        13,000원
+                    </p>
+                    <p>
+                        워크룸 프레스<br>
+                        03043 서울시 종로구<br>
+                        자하문로16길 4, 2층<br>
+                        전화. 02-6013-3246<br>
+                        팩스. 02-725-3248<br>
+                        메일. wpress@wkrm.kr<br>
+                        workroompress.kr
+                    </p>
+                </div>
+
+                <p>
+                    이 웹사이트는 워크룸프레스로부터 텍스트 사용 허가를 받아 제작되었습니다. 사용을 허락해주신 워크룸프레스와 번역가 유라주님께 감사의 말씀을 전합니다.
+                </p>
+            </div>
+        </section>
         <nav>
-            <img src="home_logo.PNG" alt="" id="logo">
+            <img src="home_logo.PNG" alt="" class="logo">
+
+            <div id="chapterList">
+                <ul>
+                    <li>
+                        <div class="cl">바다,</div>
+                        <img class="clImage" src="chapterIndicator.PNG">
+                    </li>
+                    <li>
+                        <div class="cl">das Manuskript,</div>
+                        <img class="clImage" src="chapterIndicator.PNG">
+                    </li>
+                    <li>
+                        <div class="cl">übersetzen,</div>
+                        <img class="clImage" src="chapterIndicator.PNG">
+                    </li>
+                    <div></div>
+                    <li class="invertChapter">
+                        <div class="cl">übersetzen,</div>
+                        <img class="clImage" src="chapterIndicator.PNG">
+                    </li>
+                    <li class="invertChapter">
+                        <div class="cl">das Manuskript,</div>
+                        <img class="clImage" src="chapterIndicator.PNG">
+                    </li>
+                    <li class="invertChapter">
+                        <div class="cl">die See.</div>
+                        <img class="clImage" src="chapterIndicator.PNG">
+                    </li>
+                </ul>
+            </div>
+
             <img src="nav_sample.PNG" alt="" id="nav">
         </nav>
+
+        <section>
+            <img src="highlight.png" alt="" id="highlightButton">
+
+            <div id="progressBar_full"></div>
+            <div id="progressBar_now"></div>
+
+            
+            <div id="progressPoint_now_outer">
+                <div class="progressPoint" id="progressPoint_now"></div>
+            </div>
+        </section>
+
+        <section id="dataNum">
+            <div id="scrollHeightNum"></div>
+            <div id="scrollTopNum"></div>
+            <div id="innerHeightNum"></div>
+
+            <div id="chapterNum">0</div>
+            <div id="chapterCal">0</div>
+        </section>
     </div>
 
     <script src="script.js"></script>
