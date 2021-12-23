@@ -86,8 +86,8 @@ window.onload = function(){
             leftA.left = "-18rem";
             rightA.left = "18rem";
         }
-        else if(chapterCal <= 18700){
-            A.style.width = (18700 - chapterCal)/5000 * 42 + "rem";
+        else if(chapterCal <= 15700){
+            A.style.width = (15700 - chapterCal)/2000 * 42 + "rem";
         }
         else{
             A.style.width = "0rem";
