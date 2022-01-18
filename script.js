@@ -4,29 +4,29 @@
         scriptTimeout: 3000,
         async: true
     },
+
     h=d.documentElement, t=setTimeout(function(){
         h.className = h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";
-        }, config.scriptTimeout), tk=d.createElement("script"),
-        f=false, s=d.getElementsByTagName("script")[0], a;
+    }, config.scriptTimeout), tk=d.createElement("script"),
+    f=false, s=d.getElementsByTagName("script")[0], a;
         
-        h.className += " wf-loading";
-        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-        tk.async = true;
-        tk.onload = tk.onreadystatechange = function(){
-            a = this.readyState;
-            if(f || a && a != "complete" && a != "loaded")
-                return;
+    h.className += " wf-loading";
+    tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+    tk.async = true;
+    tk.onload = tk.onreadystatechange = function(){
+        a = this.readyState;
+        if(f || a && a != "complete" && a != "loaded")
+            return;
+        
+        f = true;
+        clearTimeout(t);
+        try{
+            Typekit.load(config)}catch(e){}
+    };
             
-            f = true;
-            clearTimeout(t);
-            try{
-                Typekit.load(config)}catch(e){}
-            };
-            
-            s.parentNode.insertBefore(tk,s)
-        })(document);
+    s.parentNode.insertBefore(tk,s)
+})(document);
 
-        
 // CODE BEGINS
 
 const _page1 = document.querySelector("#page1");
@@ -50,10 +50,13 @@ const _intro = document.querySelector("#intro");
 
 ////////////////////// PAGE2 ///////////////////////
 
+const _scrollDownImg = document.querySelector("#scrollDownImg");
 const A = document.querySelector("#article");
 const leftA = document.querySelectorAll(".leftArticle");
 const rightA = document.querySelectorAll(".rightArticle");
 const _scroll = document.querySelector("#scroll");
+
+const _side = document.querySelector("#side");
 
 const _proBar = document.querySelector("#progressBar_now");
 const _proPoint = document.querySelector("#progressPoint_now_outer");
@@ -61,54 +64,20 @@ const _proPoint = document.querySelector("#progressPoint_now_outer");
 const _chapterNum = document.querySelector("#chapterNum");
 const _chapterCal = document.querySelector("#chapterCal");
 
+
 /////////////////////////////////////////////////////
 
 const TITLE_TEXT_OPACITY = .5;
 
-var page1IsOn = true;
-
-function pageChange(){
-    document.documentElement.scrollTop = 0;
-
-    if(page1IsOn){
-        _page1.style.display = "none";
-        _page2.style.display = "block";
-
-        page1IsOn = false;
-    }
-    else{
-        _page1.style.display = "block";
-        _page2.style.display = "none";
-        
-        page1IsOn = true;
-    }
-}
 function pageChange_bySkip(){
-    document.documentElement.scrollTop = 6000;
-    
-    setTimeout(function(){
-        _page1.style.display = "none";
-        _page2.style.display = "block";
-        
-        page1IsOn = false;
-        
-        document.documentElement.scrollTop = 0;
-    }, 800);
+    document.documentElement.scrollTop = 11000;
 }
 function pageChange_byLogo(){
-    document.documentElement.scrollTop = 6000;
-
-    _page1.style.display = "block";
-    _page2.style.display = "none";
-    
-    page1IsOn = true;
-    
     document.documentElement.scrollTop = 0;
 }
 
-
-
 window.onload = function(){
+    
     setTimeout(function(){
         scrollTo(0, 0);
     }, 100);
@@ -116,14 +85,10 @@ window.onload = function(){
     var chapter, chapterCal;
     
     function currentScroll(){
-        return Math.min(1, (8600 - chapterCal)/8300);
+        return Math.min(1, (11000 - chapterCal)/8000);
     }
     
-    window.addEventListener('scroll', e=>{
-        
-        
-        chapterCal = document.documentElement.scrollTop + window.innerHeight;
-        
+    window.addEventListener('scroll', e=>{  
         document.querySelector("#scrollHeightNum").innerHTML = "전체 높이 : " + document.documentElement.scrollHeight;
         document.querySelector("#scrollTopNum").innerHTML = "현재 위치 : " + document.documentElement.scrollTop.toFixed(0);
         document.querySelector("#innerHeightNum").innerHTML = "화면 높이 : " + window.innerHeight;
@@ -212,7 +177,65 @@ window.onload = function(){
             }
         }
 
-        if(chapterCal <= 8600){
+        // page1 page2 transition
+
+        if(scr < 9000){
+            _page1.style.opacity = 1;
+            _page2.style.opacity = 0;
+        } else if(scr < 11000){
+            _page1.style.display = "block";
+            _page1.style.opacity = 1- (scr-9000) /2000;
+            _page2.style.opacity = (scr-9000) /2000;
+        } else if(scr < 12000){
+            _page1.style.display = "none";
+            _page1.style.opacity = 1;
+            _page2.style.opacity = 1;
+        }
+
+        if(scr < 13000){
+            _scrollDownImg.style.display = "block";
+            _scrollDownImg.style.opacity = 1;
+        } else if(scr < 14400){
+            _scrollDownImg.style.display = "block";
+            _scrollDownImg.style.opacity = (14400-scr) /1400;
+        } else{
+            _scrollDownImg.style.display = "none";
+        }
+        
+        if(scr < 6000){
+            _title.style.transformOrigin = "70% 49%";
+            _title.style.transform = "scale(1)";
+        } else if(scr < 11000){
+            _title.style.transformOrigin = "70% 49%";
+            // 초기비율:1 나중비율 p:10
+            // 시작scr 8000 나중scr 10000
+            // opacity = p-1/2000 x + 1-4(p-1)
+            _title.style.transform = `scale(${
+                scr*9/2000 -26
+            })`;
+        } else{
+            _title.style.transformOrigin = "70% 49%";
+            _title.style.transform = "scale(1)";
+        }
+
+        ////////////
+        // 기존 page2
+
+        // page1_length = 13000, extra = 2000
+        chapterCal = window.innerHeight -11000 -2000
+            +document.documentElement.scrollTop;
+
+        if(chapterCal <= 2000){
+            A.style.width = Math.min(1,
+                Math.max(0, chapterCal/2000)
+            ) *78 + "rem";
+
+            _side.style.opacity = Math.max(0,
+                (chapterCal/2000)
+            );
+        } else if(chapterCal <= 3000){
+            A.style.width = "78rem";
+        } else if(chapterCal <= 11000){
             A.style.width = currentScroll() * 36 + 42 + "rem";
 
             for(e of leftA){
@@ -220,19 +243,22 @@ window.onload = function(){
             for(e of rightA){
                 e.style.left = (currentScroll()) * 18 + "rem";}
         }
-        else if(chapterCal <= 13700){
+        else if(chapterCal <= 15700){
             A.style.width = "42rem";
             leftA.left = "-18rem";
             rightA.left = "18rem";
         }
-        else if(chapterCal <= 15700){
-            A.style.width = (15700 - chapterCal)/2000 * 42 + "rem";
+        else if(chapterCal <= 17700){
+            A.style.width = (17700 - chapterCal)/2000 * 42 + "rem";
         }
         else{
             A.style.width = "0rem";
         }
 
-        var scrollArticle = Math.min(1, (chapterCal - window.innerHeight) / (12400 - window.innerHeight));
+        var scrollArticle = Math.min(1, Math.max(0,
+            (chapterCal -window.innerHeight -1800) 
+            / (17400 - window.innerHeight)
+        ));
 
         _proBar.style.height =  scrollArticle * 90 + "%";
         _proPoint.style.top = 5 + scrollArticle * 90 + "%";
@@ -254,10 +280,10 @@ window.onload = function(){
         _cl[5].innerHTML = "die See.";
         
 
-        if(chapterCal < 2560){
+        if(chapterCal < 2100+ 2560){
             chapter = 1;
         }
-        else if(chapterCal < 5300){
+        else if(chapterCal < 2100+ 5300){
             chapter = 2;
             _cl[1].innerHTML = "원고지,";
             _cl[2].innerHTML = "übersetzen,";
@@ -265,21 +291,21 @@ window.onload = function(){
             _cl[4].innerHTML = "das Manuskript";
             _cl[5].innerHTML = "die See.";
         }
-        else if(chapterCal < 6100){chapter = 3;
+        else if(chapterCal < 2100+ 6100){chapter = 3;
             _cl[1].innerHTML = "원고지,";
             _cl[2].innerHTML = "번역하는,";
             _cl[3].innerHTML = "übersetzen,";
             _cl[4].innerHTML = "das Manuskript,";
             _cl[5].innerHTML = "die See.";
         }
-        else if(chapterCal < 7800){chapter = 4;
+        else if(chapterCal < 2100+ 7800){chapter = 4;
             _cl[1].innerHTML = "원고지,";
             _cl[2].innerHTML = "번역하는,";
             _cl[3].innerHTML = "번역하는,";
             _cl[4].innerHTML = "das Manuskript,";
             _cl[5].innerHTML = "die See.";
         }
-        else if(chapterCal < 9450){chapter = 5;
+        else if(chapterCal < 2100+ 9450){chapter = 5;
         _cl[1].innerHTML = "원고지,";
         _cl[2].innerHTML = "번역하는,";
         _cl[3].innerHTML = "번역하는,";
@@ -297,11 +323,29 @@ window.onload = function(){
         _chapterNum.innerHTML = chapter;
         _chapterCal.innerHTML = chapterCal;
 
-        if(chapterCal < 13700){
+        if(chapterCal < 2100+ 13700){
             _cl[chapter - 1].style.color = "blue";
             _clImage[chapter - 1].style.display = "inline";
         }
     });
+
+    A.onmouseup = function(){
+        alert(3);
+    }
+}
+
+const _hlb = document.querySelector("#highlightButton");
+let isHlbOn = false;
+function highlight(){
+    if(isHlbOn){
+        _hlb.src = "image/highlight_out.svg";
+        A.style.cursor = "text";
+        isHlbOn = false;
+    } else{
+        _hlb.src = "image/highlight_on.svg";
+        A.style.cursor = "url(image/highlight_cursor.cur) 5 10, default";
+        isHlbOn = true;
+    }
 }
 
 const _footnote = document.querySelectorAll(".footnote");
@@ -320,3 +364,5 @@ _footnote[1].addEventListener("mouseover", function (e){
 _footnote[1].addEventListener("mouseout", function (e){
     _footnoteBox[1].style.display = "none";
 }, false);
+
+/////////////////
