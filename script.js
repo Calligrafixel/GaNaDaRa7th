@@ -39,9 +39,14 @@ const y_IntroFinish = 5000;
 const y_ArticleBegin = 0;
 const y_ArticleFinish = 0;
 
+const _bg = document.querySelector("#bg");
+const _topArea = document.querySelector("#topArea");
 const _bottomArea = document.querySelector("#bottomArea");
+
 const _title = document.querySelector("#title");
 const _title_text = document.querySelectorAll(".title_text_img");
+const _title_text_hover = document.querySelectorAll(".title_text_img:hover");
+
 const _title_text_lower = document.querySelector("#title_text_lower");
 const _title_indicator = document.querySelectorAll(".title_indicator");
 const _skip_Button = document.querySelector("#skipButton");
@@ -70,7 +75,7 @@ const _chapterCal = document.querySelector("#chapterCal");
 const TITLE_TEXT_OPACITY = .5;
 
 function pageChange_bySkip(){
-    document.documentElement.scrollTop = 11000;
+    document.documentElement.scrollTop = 11600;
 }
 function pageChange_byLogo(){
     document.documentElement.scrollTop = 0;
@@ -129,6 +134,9 @@ window.onload = function(){
             _title_text_lower.style.top = -11.5 + 11.5*temp + "rem";
             _title_text_lower.style.left = 39 - 39*temp + "rem";
 
+            for(let i=0; i<6; i++){
+                _title_text[i].style.borderColor = "white";
+            }
             for(let i=0; i<4; i++){
                 _title_indicator[i].style.display ="none";
             }
@@ -155,6 +163,7 @@ window.onload = function(){
             
             for(let i=0; i<6; i++){
                 _title_text[i].style.opacity = TITLE_TEXT_OPACITY;
+                _title_text[i].style.borderColor = "white";
             }
             for(let i=0; i<4; i++){
                 _title_indicator[i].style.display ="none";
@@ -163,16 +172,22 @@ window.onload = function(){
             if(scr < 2200){
                 _title_text[0].style.opacity = 1;
                 _title_text[1].style.opacity = 1;
+                _title_text[0].style.borderColor = "black";
+                _title_text[1].style.borderColor = "black";
                 _title_indicator[0].style.display ="inline";
             } else if(scr < 3150){
                 _title_text[2].style.opacity = 1;
                 _title_text[3].style.opacity = 1;
+                _title_text[2].style.borderColor = "black";
+                _title_text[3].style.borderColor = "black";
                 _title_indicator[1].style.display ="inline";
             } else if(scr < 4000){
                 _title_text[4].style.opacity = 1;
+                _title_text[4].style.borderColor = "black";
                 _title_indicator[2].style.display ="inline";
             } else if(scr < 6000){
                 _title_text[5].style.opacity = 1;
+                _title_text[5].style.borderColor = "black";
                 _title_indicator[3].style.display ="inline";
             }
         }
@@ -182,14 +197,27 @@ window.onload = function(){
         if(scr < 9000){
             _page1.style.opacity = 1;
             _page2.style.opacity = 0;
+
+            _bg.style.width = "100%";
+            _bg.style.marginLeft = "-50%";
         } else if(scr < 11000){
             _page1.style.display = "block";
             _page1.style.opacity = 1- (scr-9000) /2000;
             _page2.style.opacity = (scr-9000) /2000;
+            
+            _bg.style.width = `${
+                scr/9000 *100
+            }%`;
+            _bg.style.marginLeft = `${
+                scr/9000 * -50
+            }%`;
         } else if(scr < 12000){
             _page1.style.display = "none";
             _page1.style.opacity = 1;
             _page2.style.opacity = 1;
+
+            _bg.style.width = 1100/9 + "%";
+            _bg.style.marginLeft = -550/9 + "%";
         }
 
         if(scr < 13000){
@@ -201,12 +229,17 @@ window.onload = function(){
         } else{
             _scrollDownImg.style.display = "none";
         }
-        
+
+
         if(scr < 6000){
-            _title.style.transformOrigin = "70% 49%";
+            _topArea.style.height = "19%";
+
             _title.style.transform = "scale(1)";
         } else if(scr < 11000){
-            _title.style.transformOrigin = "70% 49%";
+            _topArea.style.height = `${Math.max(0,
+                19 - (scr-6000) /100 *19
+            )}%`;
+
             // 초기비율:1 나중비율 p:10
             // 시작scr 8000 나중scr 10000
             // opacity = p-1/2000 x + 1-4(p-1)
@@ -214,8 +247,9 @@ window.onload = function(){
                 scr*9/2000 -26
             })`;
         } else{
-            _title.style.transformOrigin = "70% 49%";
-            _title.style.transform = "scale(1)";
+            _topArea.style.height = "0%";
+
+            _title.style.transform = "scale(23.5)";
         }
 
         ////////////
@@ -328,9 +362,22 @@ window.onload = function(){
             _clImage[chapter - 1].style.display = "inline";
         }
     });
+    window.addEventListener('mouseout', e=>{
+        document.querySelector(".title_text_img:hover").style.opacity = 1;
+    });
+    window.addEventListener('mouseover', e=>{
+        document.querySelector(".title_text_img:hover").style.opacity = 1;
+    });
 
     A.onmouseup = function(){
-        alert(3);
+        if(isHlbOn){
+            for(e of leftA){
+                e.style.backgroundColor = "#19269C";
+            }
+            for(e of rightA){
+                e.style.backgroundColor = "#19269C";
+            }
+        }
     }
 }
 
@@ -341,6 +388,13 @@ function highlight(){
         _hlb.src = "image/highlight_out.svg";
         A.style.cursor = "text";
         isHlbOn = false;
+
+        for(e of leftA){
+            e.style.backgroundColor = "white";
+        }
+        for(e of rightA){
+            e.style.backgroundColor = "white";
+        }
     } else{
         _hlb.src = "image/highlight_on.svg";
         A.style.cursor = "url(image/highlight_cursor.cur) 5 10, default";
