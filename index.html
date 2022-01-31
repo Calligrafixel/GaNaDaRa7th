@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
     <title>글자를 옮기는 사람</title>
     <link rel="shortcut icon" href="image/favicon.ico">
 
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <img src="image/sample_output.png" alt="" id="sampleOutput">
     <div id="page2">
         <div id="sample_bg">ds</div>
 
@@ -272,7 +273,7 @@
                 </div>
                 <div id="title_text">
                     <div id="title_text_upper">
-                        <div onclick="document.documentElement.scrollTop = 1950;">
+                        <div onclick="pageChange_byChapter(1950);">
                             <div>
                                 <img class="title_text_img" src="image/SVG/title_on_1.svg" alt="">
                             </div>
@@ -281,7 +282,7 @@
                                 <img class="title_indicator" src="image/chapter_indicator_page1.png" alt="">
                             </div>
                         </div>
-                        <div onclick="document.documentElement.scrollTop = 2500;">
+                        <div onclick="pageChange_byChapter(2500);">
                             <div>
                                 <img class="title_text_img" src="image/SVG/title_on_3.svg" alt="">
                             </div>
@@ -293,11 +294,11 @@
                     </div>
                     <div id="title_text_space"></div>
                     <div id="title_text_lower">
-                        <div onclick="document.documentElement.scrollTop = 3450;">
+                        <div onclick="pageChange_byChapter(3950);">
                             <img class="title_text_img" src="image/SVG/title_on_5.svg" alt="">
                             <img class="title_indicator" src="image/chapter_indicator_page1.png" alt="">
                         </div>
-                        <div onclick="document.documentElement.scrollTop = 4200;">
+                        <div onclick="pageChange_byChapter(4200);">
                             <img class="title_text_img" src="image/SVG/title_on_6.svg" alt="">
                             <img class="title_indicator" src="image/chapter_indicator_page1.png" alt="">
                         </div>
@@ -495,6 +496,21 @@
         </div>
 
         <div id="page1_scroll">d</div>
+    </div>
+    
+    <div id="pageM">
+        <div id="topAreaM"></div>
+        
+        <div id="textM">
+            <img src="image/screenIcon.svg" alt="" id="screenIcon">
+            
+            <div id="textM1">
+            이 사이트는 PC 환경에서 작동하도록 최적화되어 있습니다.
+            </div>
+            <div id="textM2">
+            웹사이트를 이용하기 위해서는 PC에서 접속하시기 바랍니다. 
+            </div>
+        </div>
     </div>
 
     <section id="dataNum">

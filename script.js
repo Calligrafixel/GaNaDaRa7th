@@ -45,9 +45,11 @@ const _bottomArea = document.querySelector("#bottomArea");
 
 const _title = document.querySelector("#title");
 const _title_text = document.querySelectorAll(".title_text_img");
-const _title_text_hover = document.querySelectorAll(".title_text_img:hover");
-
 const _title_text_lower = document.querySelector("#title_text_lower");
+
+const _upperChapter = document.querySelectorAll("#title_text_upper > div");
+const _lowerChapter = document.querySelectorAll("#title_text_lower > div");
+
 const _title_indicator = document.querySelectorAll(".title_indicator");
 const _skip_Button = document.querySelector("#skipButton");
 
@@ -79,6 +81,11 @@ function pageChange_bySkip(){
 }
 function pageChange_byLogo(){
     document.documentElement.scrollTop = 0;
+}
+function pageChange_byChapter(scr){
+    if(document.documentElement.scrollTop < 6000){
+        document.documentElement.scrollTop = scr;
+    }
 }
 
 window.onload = function(){
@@ -197,27 +204,14 @@ window.onload = function(){
         if(scr < 9000){
             _page1.style.opacity = 1;
             _page2.style.opacity = 0;
-
-            _bg.style.width = "100%";
-            _bg.style.marginLeft = "-50%";
         } else if(scr < 11000){
             _page1.style.display = "block";
             _page1.style.opacity = 1- (scr-9000) /2000;
             _page2.style.opacity = (scr-9000) /2000;
-            
-            _bg.style.width = `${
-                scr/9000 *100
-            }%`;
-            _bg.style.marginLeft = `${
-                scr/9000 * -50
-            }%`;
         } else if(scr < 12000){
             _page1.style.display = "none";
             _page1.style.opacity = 1;
             _page2.style.opacity = 1;
-
-            _bg.style.width = 1100/9 + "%";
-            _bg.style.marginLeft = -550/9 + "%";
         }
 
         if(scr < 13000){
@@ -362,23 +356,17 @@ window.onload = function(){
             _clImage[chapter - 1].style.display = "inline";
         }
     });
-    window.addEventListener('mouseout', e=>{
-        document.querySelector(".title_text_img:hover").style.opacity = 1;
-    });
-    window.addEventListener('mouseover', e=>{
-        document.querySelector(".title_text_img:hover").style.opacity = 1;
-    });
 
-    A.onmouseup = function(){
-        if(isHlbOn){
-            for(e of leftA){
-                e.style.backgroundColor = "#19269C";
-            }
-            for(e of rightA){
-                e.style.backgroundColor = "#19269C";
-            }
-        }
-    }
+//    A.onmouseup = function(){
+//        if(isHlbOn){
+//            for(e of leftA){
+//                e.style.backgroundColor = "#19269C";
+//            }
+//            for(e of rightA){
+//                e.style.backgroundColor = "#19269C";
+//            }
+//        }
+//    }
 }
 
 const _hlb = document.querySelector("#highlightButton");
