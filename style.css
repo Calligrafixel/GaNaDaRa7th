@@ -122,6 +122,8 @@ body{margin: 0;
     position: relative;
     border-bottom: .3rem solid;
     border-color: white;
+
+    cursor: pointer;
 }
 .overText{
     opacity: 1;
@@ -185,6 +187,16 @@ body{margin: 0;
     position: relative; left: -7rem;
 }
 
+#intro .engIntro{
+    font-family: 'EB Garamond', serif; font-weight: 400;
+}
+#intro .engIntro1{
+    font-family: 'EB Garamond', serif; font-weight: 500;
+}
+#intro .engIntro2{
+    font-family: 'EB Garamond', serif; font-weight: 600;
+}
+
 #page1_scroll{width: 10rem; height: 1000%;
     background-color: red; z-index: 10000;
     display: none;
@@ -211,10 +223,10 @@ body{margin: 0;
     width: 34.4rem;
     margin: 0 auto; position: relative;
 }
-#article .pageLine{border-left: solid 1px blue;
+#article .pageLine{border-left: solid 1px #19269C;
     width: 0; height: 7rem;
     margin-top: 22rem; margin-bottom: 1.5rem;}
-#article .pageNum{color: blue;
+#article .pageNum{color: #19269C;
     margin-bottom: 7rem; text-align: center;}
 
 #article .leftArticle{left: -18rem;}
@@ -243,7 +255,7 @@ body{margin: 0;
 .footnote .footnoteBox:nth-child(2){right: 10rem;}
 
 .footnote .footnoteContent{width: 20rem; background-color: white;
-    padding: 1rem;}
+    padding: 1rem; font-size: .7rem;}
 
 #side{
     opacity: 0;
@@ -323,5 +335,5 @@ nav > #chapterList .clImage{width: .7rem;
 #dataNum{
     position: fixed; right: 9rem; top: 9rem;
     background-color: #fff; border: 1px solid black;
-    padding: 1rem; display: non/e;
+    padding: 1rem; display: none;
 }
