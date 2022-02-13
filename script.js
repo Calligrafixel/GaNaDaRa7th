@@ -352,42 +352,10 @@ window.onload = function(){
         _chapterCal.innerHTML = chapterCal;
 
         if(chapterCal < 2100+ 13700){
-            _cl[chapter - 1].style.color = "blue";
+            _cl[chapter - 1].style.color = "#19269C";
             _clImage[chapter - 1].style.display = "inline";
         }
     });
-
-//    A.onmouseup = function(){
-//        if(isHlbOn){
-//            for(e of leftA){
-//                e.style.backgroundColor = "#19269C";
-//            }
-//            for(e of rightA){
-//                e.style.backgroundColor = "#19269C";
-//            }
-//        }
-//    }
-}
-
-const _hlb = document.querySelector("#highlightButton");
-let isHlbOn = false;
-function highlight(){
-    if(isHlbOn){
-        _hlb.src = "image/highlight_out.svg";
-        A.style.cursor = "text";
-        isHlbOn = false;
-
-        for(e of leftA){
-            e.style.backgroundColor = "white";
-        }
-        for(e of rightA){
-            e.style.backgroundColor = "white";
-        }
-    } else{
-        _hlb.src = "image/highlight_on.svg";
-        A.style.cursor = "url(image/highlight_cursor.cur) 5 10, default";
-        isHlbOn = true;
-    }
 }
 
 const _footnote = document.querySelectorAll(".footnote");

@@ -1,16 +1,31 @@
 html{
     scroll-behavior: smooth;
 }
-*{font-family: agchoijeongho-screen, sans-serif;
+*{
+    font-family: agchoijeongho-screen, sans-serif;
     font-weight: 400; font-style: normal;
     word-break: keep-all; line-height: 2;
 }
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
+#intro .engIntro{
+    font-family: 'EB Garamond', serif; font-weight: 500; background: rgb(255, 214, 214);
+}
+#intro .chnIntro{
+    font-family: 'Noto Serif SC', serif; background: rgb(218, 255, 209);;
+}
+
 a{color: black; text-decoration: none;}
 
-body{margin: 0;
-    cursor: default;
+body{
+    margin: 0; cursor: default;
 }
+.title_text_img, #skipButton, .logo, .cl{
+    cursor: pointer;
+}
+#intro, #article{
+    cursor: text;
+}
+
 
 #sampleOutput{
     position: fixed; z-index: 1000;
@@ -30,20 +45,31 @@ body{margin: 0;
     display: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
     #page1, #page2{display: none;}
     #pageM{ display: block;}
     
     #screenIcon{width: 11rem; margin-bottom: 2rem;}
     #textM1{font-size: 1.6rem;}
     #textM2{font-size: 1.4rem;}
+
+    #hangulggolLogo{
+        bottom: 6%;
+        width: 8rem; margin-left: -4rem;
+    }
 }
 @media (max-width: 767px) {
     #page1, #page2{display: none;}
-    #pageM{ display: block;}
+    #pageM{display: block;}
     
-    #screenIcon{width: 6.3rem; margin-bottom: .3rem;} #textM1{font-size: .8rem;}
+    #screenIcon{width: 6.3rem; margin-bottom: .3rem;}
+    #textM1{font-size: .8rem;}
     #textM2{font-size: .7rem;}
+
+    #hangulggolLogo{
+        bottom: 8%;
+        width: 4rem; margin-left: -2rem;
+    }
 }
 
 #pageM *{
@@ -59,9 +85,8 @@ body{margin: 0;
     width: 1000px; margin-left: -500px;
     text-align: center;
 }
-#textM2{
-    opacity: .7;
-}
+#textM2{opacity: .7;}
+#hangulggolLogo{position: fixed; left: 50%;}
 
 /* CODE BEGINS */
 
@@ -122,8 +147,6 @@ body{margin: 0;
     position: relative;
     border-bottom: .3rem solid;
     border-color: white;
-
-    cursor: pointer;
 }
 .overText{
     opacity: 1;
@@ -157,8 +180,6 @@ body{margin: 0;
 #intro{
     position: relative; left: 25rem;
     width: 4600rem; opacity: 0;
-
-    cursor: text;
 }
 #intro *{
     font-size: .88rem; line-height: 1.6;
@@ -178,29 +199,23 @@ body{margin: 0;
     position: relative; left: -3.9rem;
 }
 #intro #bookList span{
-    position: relative; left:1.4rem;
+    position: relative; left: 1.4rem;
+}
+#intro #bookList .multiIndex{
+    float: left; margin-right: 1.6rem;
 }
 #intro #bookList .multiIntro{
-    float: left; margin: 0 2.7 rem;
+    margin: 0 2.7 rem;
 }
 #intro #aboutTranslator{
     position: relative; left: -7rem;
 }
 
-#intro .engIntro{
-    font-family: 'EB Garamond', serif; font-weight: 400;
-}
-#intro .engIntro1{
-    font-family: 'EB Garamond', serif; font-weight: 500;
-}
-#intro .engIntro2{
-    font-family: 'EB Garamond', serif; font-weight: 600;
-}
 
-#page1_scroll{width: 10rem; height: 1000%;
+/* #page1_scroll{width: 10rem; height: 1000%;
     background-color: red; z-index: 10000;
     display: none;
-}
+} */
 
 /* 2ND PAGE */
 
@@ -216,8 +231,6 @@ body{margin: 0;
     margin: 11000px auto 0;
     padding: 250rem 0 0;
     opacity: 1;
-
-    cursor: text;
 }
 #article > div{
     width: 34.4rem;
@@ -245,17 +258,28 @@ body{margin: 0;
 }
 
 
-.footnote{color: #19269C; position: relative;
+.footnote{
+    color: #19269C; position: relative;
 }
-.footnote .footnoteBox{position: absolute;
+.footnote .footnoteBox{
+    position: absolute;
     display: none;
     border-top: 1px solid #19269C;
 }
-.footnote .footnoteBox:nth-child(1){left: 30rem;}
-.footnote .footnoteBox:nth-child(2){right: 10rem;}
-
-.footnote .footnoteContent{width: 20rem; background-color: white;
+.footnote .footnoteContent{
+    position: relative;  background-color: white;
     padding: 1rem; font-size: .7rem;}
+#fn1 .footnoteBox{
+    width: 52rem; left: -5.5rem;}
+#fn1 .footnoteContent{
+    width: 20.5rem; left: 29.5rem;;
+}
+#fn2 .footnoteBox{
+    width: 34.5rem; right: 0rem;}
+#fn2 .footnoteContent{
+    width: 13rem; right: 0rem;
+}
+
 
 #side{
     opacity: 0;
