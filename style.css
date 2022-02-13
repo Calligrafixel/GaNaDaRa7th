@@ -268,9 +268,10 @@ body{
 }
 .footnote .footnoteContent{
     position: relative;  background-color: white;
-    padding: 1rem; font-size: .7rem;}
+    padding: .75rem 1rem; font-size: .7rem;
+}
 #fn1 .footnoteBox{
-    width: 52rem; left: -5.5rem;}
+    width: 52rem; left: 0rem;}
 #fn1 .footnoteContent{
     width: 20.5rem; left: 29.5rem;;
 }
