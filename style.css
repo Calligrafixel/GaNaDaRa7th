@@ -8,10 +8,10 @@ html{
 }
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
 #intro .engIntro{
-    font-family: 'EB Garamond', serif; font-weight: 500; background: rgb(255, 214, 214);
+    font-family: 'EB Garamond', serif; font-weight: 500;
 }
 #intro .chnIntro{
-    font-family: 'Noto Serif SC', serif; background: rgb(218, 255, 209);;
+    font-family: 'Noto Serif SC', serif;
 }
 
 a{color: black; text-decoration: none;}
