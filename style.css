@@ -245,10 +245,19 @@ body{
 #article .leftArticle{left: -18rem;}
 #article .rightArticle{right: -18rem;}
 
-#betweenSpace{height: 220rem;}
+#betweenSpace{height: 200rem;}
 
 #credit{position: relative; left: -14rem;}
 #credit .logo{width: 10rem;}
+#credit #hgg_logo{width: 13rem;}
+#credit #gndr_logo{width: 20rem;}
+#credit a{
+    text-decoration: underline;
+    position: relative;
+}
+#credit a:nth-child(1){top: -12rem;}
+#credit a:nth-child(2){top: -6rem;}
+
 #credit div{
     height: 30rem; column-count: 2;
     margin-top: 5rem;
@@ -291,7 +300,7 @@ nav .logo{position: fixed; width: 10rem;
 nav > #nav{position: fixed; width: 7rem;
     bottom: 26rem; left: 2.5rem; display: none;}
 nav > #chapterList{
-    position: fixed; bottom: 26rem; left: 1rem;
+    position: fixed; bottom: 30rem; left: 1rem;
 }
 nav > #chapterList li{list-style-type: none;
     height: 2rem;
