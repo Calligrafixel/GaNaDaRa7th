@@ -1,6 +1,4 @@
-html{
-    scroll-behavior: smooth;
-}
+html{scroll-behavior: smooth;}
 *{
     font-family: agchoijeongho-screen, sans-serif;
     font-weight: 400; font-style: normal;
@@ -255,8 +253,6 @@ body{
     text-decoration: underline;
     position: relative;
 }
-#credit a:nth-child(1){top: -12rem;}
-#credit a:nth-child(2){top: -6rem;}
 
 #credit div{
     height: 30rem; column-count: 2;
@@ -264,6 +260,18 @@ body{
 }
 #credit > p{
     height: 15rem;
+}
+
+
+#credit #finalPart1{
+    position: relative; top: -6rem;
+}
+#credit #finalPart2{
+    position: relative; top: 12rem;
+}
+#credit #finalPart3{
+    position: relative; top: 22rem;
+    margin-bottom: 20rem;
 }
 
 
